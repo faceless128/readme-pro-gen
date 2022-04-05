@@ -125,6 +125,4 @@ function writeToFile(fileName, data) {}
 const init = () => {return inquirer.prompt(questions)};
 
 // Function call to initialize app
-init().then(promptProject = portfolioData => {
-    console.log(portfolioData);
-});
+init().then(data => {return getMarkdown(data)}).then(markdown => (console.log(markdown)));

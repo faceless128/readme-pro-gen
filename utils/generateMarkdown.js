@@ -10,10 +10,44 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-// TODO: Create a function to generate markdown for README
+// Add optional Table of Contents
+const generateTOC = checkTOC => {
+  if (!checkTOC) {
+      return '';
+  }
+  return `
+  ##Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
+`
+}
+
+// Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
+## Description
+${data.description}
+${generateTOC(data.confirmTOC)}
+## Installation
+${data.installation}
+
+## Usage
+${data.usage}
+
+## License
+
+## Contributing
+${data.contribution}
+
+## Tests
+${data.tests}
+
+## Questions
 `;
 }
 
