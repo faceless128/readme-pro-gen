@@ -127,6 +127,7 @@ const questions = [
 
 // Write README file
 const writeToFile = fileContent => {
+    checkDir();
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/README.md', fileContent, err => {
             if (err) {
@@ -139,6 +140,18 @@ const writeToFile = fileContent => {
             });
         });
     });
+}
+
+const checkDir = () => {
+    if(!fs.existsSync("dist")){
+        fs.mkdirSync("dist", 0766, function(err){
+            if(err){
+                console.log(err);
+                // echo the result back
+                response.send("ERROR! Can't make the directory! \n");
+            }
+        });
+    }
 }
 
 // Function to initialize app and start asking questions
