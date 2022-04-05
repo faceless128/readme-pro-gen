@@ -58,6 +58,12 @@ const questions = [
         }
     },
     {
+        type: 'list',
+        name: 'license',
+        message: 'How will you license this software? (Required)',
+        choices: ['Apache 2.0 License', 'GNU GPL v3', 'MIT License', 'Mozilla Public License 2.0']
+    },
+    {
         type: 'input',
         name: 'contribution',
         message: 'What are the contribution guidelines? (Required)',
@@ -118,11 +124,24 @@ const questions = [
 ];
 
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// Write README file
+const writeToFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', fileContent, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+}
 
-// TODO: Create a function to initialize app
+// Function to initialize app and start asking questions
 const init = () => {return inquirer.prompt(questions)};
 
 // Function call to initialize app
-init().then(data => {return getMarkdown(data)}).then(markdown => (console.log(markdown)));
+init().then(data => {return getMarkdown(data)}).then(markdown => (writeToFile(markdown)));
