@@ -142,6 +142,7 @@ const writeToFile = fileContent => {
     });
 }
 
+// check for dist directory
 const checkDir = () => {
     if(!fs.existsSync("dist")){
         fs.mkdirSync("dist", 0766, function(err){
