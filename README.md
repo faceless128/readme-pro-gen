@@ -14,3 +14,6 @@ The README.md will be created in the dist subdirectory.
 
 ## Installation
 Clone the repository and install needed dependencies via NMP
+
+## Demonstration
+Here is a [Video Walkthrough](https://drive.google.com/file/d/1tZsP-tNa3Th6wgI0cm1s7T6sg--CP5eA/view?usp=sharing)
